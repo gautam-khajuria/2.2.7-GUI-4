@@ -7,6 +7,17 @@ import tkinter.scrolledtext as tksc
 from tkinter import filedialog
 from tkinter.filedialog import asksaveasfilename
 
+import platform
+
+current_os = platform.system()
+print(f'{current_os=}')
+
+commands = {
+  'ping': 'ping',
+  'traceroute': 'tracert' if current_os == 'Windows' else 'traceroute',
+  'nslookup': 'nslookup'
+}
+
 # Modify the do_command function:
 #   to use the new button as needed
 def do_command(command):
@@ -35,8 +46,11 @@ frame = tk.Frame(root)
 frame.pack()
 
 # set up button to run the do_command function
-ping_btn = tk.Button(frame, text="Check to see if a URL is up and active", command=lambda:do_command("ping"))
+ping_btn = tk.Button(frame, text="PING", command=lambda:do_command(commands['ping']))
 ping_btn.pack()
+
+tracert_btn = tk.Button(frame, text="TRACE ROUTE", command=lambda:do_command(commands['traceroute']))
+tracert_btn.pack()
 
 # creates the frame with label for the text box
 frame_URL = tk.Frame(root, pady=10,  bg="black") # change frame color
