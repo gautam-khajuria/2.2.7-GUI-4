@@ -63,6 +63,7 @@ def mSave():
 
 
 root = tk.Tk()
+root.title("INTERNET FAST - CHECK ANY WEBSITE!")
 root.configure(background=background)
 
 frame = tk.Frame(root)
